@@ -6,13 +6,18 @@ class DogCard extends React.Component {
     barkClicked: false
   }
 
-  handleClick = () => {
-    this.setState(previousState => {
-      return {
-        barkClicked: !previousState.barkClicked
-      }
-    })
+  // handleClick = () => {
+  //   this.setState(previousState => {
+  //     return {
+  //       barkClicked: !previousState.barkClicked
+  //     }
+  //   })
+  // }
+
+  dogFavClickHandler = () => {
+    this.props.favClickHandler(this.props.dog)
   }
+
 
   render() {
     return (
@@ -21,10 +26,10 @@ class DogCard extends React.Component {
           <h2 >{this.props.dog.name}</h2>
           <img alt={this.props.dog.breed} src={this.props.dog.img} />
         </span>
-        <span className="bark">
-          <button onClick={this.handleClick}>Bark</button>
-          {this.state.barkClicked ? (<h2>Bark</h2>) : null}
-        </span>
+        {this.props.isFavorited ? null : ( 
+          <span className="bark">
+            <button onClick={this.dogFavClickHandler}>Favorite</button>
+          </span>)}
       </div>
     );
   }

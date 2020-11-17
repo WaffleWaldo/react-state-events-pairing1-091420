@@ -9,11 +9,16 @@ class DogsList extends Component {
   }
 
   renderDogs = () => {
-    return this.state.api.map(dog => <DogCard dog={dog}/>)
+    return this.state.api.map(dog => <DogCard key={dog.id} dog={dog} favClickHandler={this.props.favClickHandler}/>)
   }
 
   render() {
-    return <div className="list">{this.renderDogs()}</div>;
+    return (
+      <div className="list">
+        <h1 className="container-header">All Dogs</h1>
+        <div>{this.renderDogs()}</div>
+      </div>
+    )
   }
 }
 
