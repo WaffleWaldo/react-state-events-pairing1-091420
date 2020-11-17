@@ -25,4 +25,4 @@ const apiResponse = [
     }
 ]
 
-export default { apiResponse }
+export { apiResponse }
